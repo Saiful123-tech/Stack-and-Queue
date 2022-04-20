@@ -1,0 +1,28 @@
+lude<bits/stdc++.h>
+bool findRedundantBrackets(string &s)
+{
+    // Write your code here.
+	stack<char> S;
+    for(int i=0;i<s.size();i++){
+		if(s[i]=='(' || s[i]=='+' || s[i]=='*' || s[i]=='/' || s[i]=='-' ){
+			S.push(s[i]);
+		}
+		else{
+			if(s[i]==')'){
+				bool isRedundant=true;
+				while(S.top()!='('){
+					if(S.top()=='+' || S.top()=='-' || S.top()=='/'
+					   || S.top()=='*'){
+					isRedundant=false;
+					}
+				S.pop();
+				}
+				if(isRedundant==true){
+					return true;
+				}
+				S.pop();
+			}
+		}
+	}
+	return false;
+}
