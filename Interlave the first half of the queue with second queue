@@ -1,0 +1,30 @@
+void interLeaveQueue(queue < int > & q) {
+    // Write your code here.
+	int size=q.size();
+	int mid=(0+q.size())/2;
+	queue<int> q1;
+	queue<int> q2;
+	int count=0;
+	while(!q.empty()){
+		if(mid>count){
+			q1.push(q.front());
+		}
+		else{
+			q2.push(q.front());
+		}
+		q.pop();
+		count++;
+	}
+	int j=0;
+	while(!q1.empty() || !q2.empty()){
+		if(j%2==0){
+			q.push(q1.front());
+			q1.pop();
+		}
+		else{
+			q.push(q2.front());
+			q2.pop();
+		}
+		j++;
+	}
+}
